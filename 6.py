@@ -18,15 +18,15 @@ cuántos son menores de edad (< 18)
 edades = [18, 22, 15, 30, 17, 40, 16, 25] #esto sí puede ir afuera de la función porque es una variable global
 #NO ES BUENA PRACTICA METER A "EDADES" DENTRO DE LA FUNCIÓN
 
-def cuentas(diccionario): #pasamos la variable global como parámetro para que no haya posibilidad de que python se confunda
- diccionario = { 
-    contar_edades = 0,
-    suma_edades = 0,  
-     mayores_edad = 0,
-     menores_edad = 0,
-    edad_maxima = edades [0],
+def cuentas(edades): #pasamos la variable global como parámetro para que no haya posibilidad de que python se confunda
+
+    contar_edades = 0
+    suma_edades = 0  
+    mayores_edad = 0
+    menores_edad = 0
+    edad_maxima = edades [0]
     edad_minima = edades [0]
-    }
+    
 
     for i in edades:
 
@@ -46,12 +46,21 @@ def cuentas(diccionario): #pasamos la variable global como parámetro para que n
 
 
     promedio = suma_edades/contar_edades
-    return diccionario(edad_minima, edad_maxima, promedio, mayores_edad, menores_edad)
+    return edad_minima, edad_maxima, promedio, mayores_edad, menores_edad #se guardan los valores
        
        
 
 
-edad_min, edad_max, promedio, mayores, menores = cuentas(edades)
+edad_min, edad_max, promedio, mayores, menores = cuentas(edades) # la función es llamada
+
+diccionario_resultado = {
+    "Edad máxima": edad_max,
+    "Edad mínima": edad_min,
+    "Promedio de edades":promedio,
+    "Mayores de edad": mayores,
+    "Menos de edad": menores
+
+}
 
 print(f"La edad máxima es: {edad_max}")
 print(f"La edad mínima es: {edad_min}")
