@@ -45,28 +45,26 @@ def cuentas(edades): #pasamos la variable global como parámetro para que no hay
             menores_edad = menores_edad + 1
 
 
-    promedio = suma_edades/contar_edades
-    return edad_minima, edad_maxima, promedio, mayores_edad, menores_edad #se guardan los valores
-       
-       
+    promedio = suma_edades/contar_edades #promedio
 
-
-edad_min, edad_max, promedio, mayores, menores = cuentas(edades) # la función es llamada
-
-diccionario_resultado = {
-    "Edad máxima": edad_max,
-    "Edad mínima": edad_min,
-    "Promedio de edades":promedio,
-    "Mayores de edad": mayores,
-    "Menos de edad": menores
+    diccionario_resultado = {
+        "Edad máxima": edad_maxima,
+        "Edad mínima": edad_minima,
+        "Promedio de edades":promedio,
+        "Mayores de edad": mayores_edad,
+        "Menos de edad": menores_edad
 
 }
+    return diccionario_resultado #se guardan los valores
+       
+       
 
-print(f"La edad máxima es: {edad_max}")
-print(f"La edad mínima es: {edad_min}")
-print(f"El promedio es: {promedio}")
-print(f"Mayores de edad: {mayores}")
-print(f"Menores de edad: {menores}")
+
+resultado = cuentas(edades) # la función es llamada
+
+
+
+print(resultado)
 
             
 
