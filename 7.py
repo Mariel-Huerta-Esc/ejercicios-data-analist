@@ -21,7 +21,7 @@ ventas = [120, 90, 300, 50, 210, 400, 75]
 
 def funcion(ventas):
 
-    valor_minimo = ventas[0]  #esto sirve para contar
+    valor_minimo = ventas[0]  
     valor_maximo = ventas[0]
     ventas_totales = 0
     conteo_ventas = 0
@@ -52,6 +52,12 @@ def funcion(ventas):
     return diccionario #devuelve valores
 
 resultado = funcion(ventas) #se llama a la función y se le pasa el parámetro
+"""Esta linea 54 es oro puro ya que ahora:
+
+-puedo cambiar el dataset
+-puedo usar la función 100 veces
+-no dependo de nada externo
+ es buena práctica."""
 
 
 
