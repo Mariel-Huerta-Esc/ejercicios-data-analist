@@ -26,14 +26,14 @@ meses  = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"] #lista
 def venta (ventas):
     venta_minima = ventas[0]
     venta_maxima = ventas[0]
-    total_ventas = 0 #conteo
+    conteo_ventas = 0 #conteo
     
     conteo_ventas_totales = 0
 
 
     for i in ventas:
 
-        total_ventas = total_ventas + 1 #aquí se cuenta: "venta 1", "venta 2" etc
+        conteo_ventas = conteo_ventas + 1 #aquí se cuenta: "venta 1", "venta 2" etc
         conteo_ventas_totales = conteo_ventas_totales + i #se sumas las ventas
         
 
@@ -46,12 +46,12 @@ def venta (ventas):
 
 
 
-    promedio = conteo_ventas_totales / total_ventas
+    promedio = conteo_ventas_totales / conteo_ventas
 
     diccionario = {
         "venta mínima": venta_minima,
         "venta máxima": venta_maxima,
-        "Total de ventas": total_ventas,
+        "Total de ventas": conteo_ventas,
         "Promedio de ventas": promedio
 
         
@@ -60,41 +60,47 @@ def venta (ventas):
     return diccionario
 
 
-diccionario = venta(ventas)
 
-resultado = venta(ventas)
 
-print(resultado)
+
             
 
 
 
-def months (meses):
+def months (ventas, meses):
 
-    mes_venta_minima = ventas[0]
-    mes_venta_maxima = ventas[0]
+    mes_venta_minima = meses[0]
+    mes_venta_maxima = meses[0]
+    venta_minima = ventas[0]
+    venta_maxima = ventas [0]
+    
 
     
-    diccionario_ventas_meses = dict(zip(ventas, meses))
+    
 
-    for i in diccionario_ventas_meses:
+    for venta, mes in zip(ventas, meses):
+        if venta < venta_minima:
+            venta_minima = venta
+            mes_venta_minima = mes
 
-        if i < mes_venta_minima:
-            mes_venta_minima = i
+        if venta > venta_maxima:
+            venta_maxima = venta
+            mes_venta_maxima = mes
 
-        if i > mes_venta_maxima:
-            mes_venta_maxima = i
-
-    diccionario2 = {
+    diccionario = {
         "mes venta minima" : mes_venta_minima,
         "mes venta maxima" : mes_venta_maxima
     }        
     
-    return diccionario2 #guardando valores
+    return diccionario #guardando valores
 
-resultado2 = months(meses) #llamando a la función
+#llamando a ambas funciones:
+resultado_de_ventas = venta (ventas)
+resultado_de_meses = months(ventas, meses)
 
-print(resultado2)
+
+print(resultado_de_ventas)
+print(resultado_de_meses)
 
 
 
