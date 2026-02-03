@@ -1,60 +1,66 @@
+"""Toma en cuenta esta lista:
+ventas = [120, 90, 300, 50, 210, 400, 75, 180, 60, 250],
+Objetivo:
+Contar cuántas ventas son:
+Bajas: < 100
+Medias: entre 100 y 200 (inclusive)
+Altas: > 200
 
-ventas = [120, 90, 300, 50, 210, 400, 75]
-meses  = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"]
+Calcular:
+Total de ventas
+Promedio de ventas
+Regresar todos los resultados en un diccionario,
 
-# Función para calcular totales y ventas extrema
-def calcular_ventas(ventas):
-    venta_minima = ventas[0]
-    venta_maxima = ventas[0]
+REGLAS:
+NO usar sum(), len(), min(), max(), ni librerías.
+Todo se hace dentro de la función.
+Se pueden usar variables acumuladoras, for e if/elif. """
+
+ventas = [120, 90, 300, 50, 210, 400, 75, 180, 60, 250]
+
+def funcion_ventas (ventas):
     total_ventas = 0
-    conteo_ventas = 0
+    suma_ventas = 0
+    ventas_bajas = 0
+    ventas_medias = 0
+    ventas_altas = 0
 
-    for venta in ventas:
-        total_ventas += venta
-        conteo_ventas += 1
 
-        if venta < venta_minima:
-            venta_minima = venta
-        if venta > venta_maxima:
-            venta_maxima = venta
+    for i in ventas:
+        total_ventas = total_ventas + 1 #conteo de ventas
+        suma_ventas = suma_ventas + i #se suman las ventas
 
-    promedio = total_ventas / conteo_ventas
+        if i < 100:
+            ventas_bajas = ventas_bajas + 1
 
-    diccionario = {
-        "venta minima": venta_minima,
-        "venta maxima": venta_maxima,
-        "total de ventas": total_ventas,
-        "promedio de ventas": promedio
-    }
+        elif 100 <= i <= 200:
+            ventas_medias = ventas_medias + 1
+        else:
+            ventas_altas = ventas_altas + 1
+        promedio = suma_ventas / total_ventas    
 
-    return diccionario
+    
 
-# Función para asociar los meses a las ventas extrema
-def meses_extremos(ventas, meses):
-    venta_minima = ventas[0]
-    venta_maxima = ventas[0]
-    mes_venta_minima = meses[0]
-    mes_venta_maxima = meses[0]
+    
+        diccionario_resultado = {
+        "Ventas menores a 100" : ventas_bajas,
+        "Ventas entre 100 y 200" :ventas_medias,
+        "Ventas mayores a 200" : ventas_altas,
+        "Ventas totales ventas" : total_ventas,
+        "Suma de ventas" : suma_ventas,
+        "promedio de ventas" : promedio
+    }        
+        
 
-    for venta, mes in zip(ventas, meses):
-        if venta < venta_minima:
-            venta_minima = venta
-            mes_venta_minima = mes
-        if venta > venta_maxima:
-            venta_maxima = venta
-            mes_venta_maxima = mes
 
-    diccionario = {
-        "mes venta minima": mes_venta_minima,
-        "mes venta maxima": mes_venta_maxima
-    }
+    return diccionario_resultado
+llamando_funcion = funcion_ventas(ventas)
 
-    return diccionario
+print(llamando_funcion)
 
-# Llamamos a ambas funciones
-resultado_ventas = calcular_ventas(ventas)
-resultado_meses = meses_extremos(ventas, meses)
 
-# Imprimimos los resultados
-print(resultado_ventas)
-print(resultado_meses)
+
+
+
+   
+    
