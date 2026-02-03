@@ -37,12 +37,12 @@ def funcion_ventas (ventas):
             ventas_medias = ventas_medias + 1
         else:
             ventas_altas = ventas_altas + 1
-        promedio = suma_ventas / total_ventas    
+    promedio = suma_ventas / total_ventas    
 
     
 
     
-        diccionario_resultado = {
+    diccionario_resultado = {
         "Ventas menores a 100" : ventas_bajas,
         "Ventas entre 100 y 200" :ventas_medias,
         "Ventas mayores a 200" : ventas_altas,
