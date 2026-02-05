@@ -56,6 +56,7 @@ def cuentas(edades): #pasamos la variable global como parámetro para que no hay
 
 }
     return diccionario_resultado #se guardan los valores
+
        
        
 

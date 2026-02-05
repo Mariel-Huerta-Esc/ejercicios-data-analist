@@ -28,14 +28,13 @@ df = pd.DataFrame({
 
 indice_max = df["ventas"].idxmax()
 indice_min = df["ventas"].idxmin()
-df["mes"].max()
 df["mes"].loc[indice_max]
 df["mes"].loc[indice_min]
 # sacando el promedio:
 df["ventas"].mean()
 
 diccionario = {
-    "Meses con sus respectivas ventas" : df,
+    "Meses con sus respectivas ventas" : df, #esto no es común hacerlo así, no se considera buena práctica
     "El indice de la venta máxima es" : indice_max,
     "El indice de la venta mínima es" : indice_min,
     "El mes con venta máxima es" : df["mes"].loc[indice_max],
