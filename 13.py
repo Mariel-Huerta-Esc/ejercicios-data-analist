@@ -1,38 +1,27 @@
-def funcion(ventas, meses):
-    resultado = {}
+"""Una pequeña introducción a pandas con ejercicios simples
+Crea un DataFrame con:
+meses = ["Enero","Febrero","Marzo"]
+ventas = [10, 50, 30]
 
-    venta_minima = ventas[0]
-    mes_minimo = meses[0]
+haz:
+imprime el máximo
+imprime el índice del máximo
+solo eso.  """
 
-    venta_maxima = ventas[0]
-    mes_maximo = meses[0]
 
-    total_ventas = 0
-    suma_ventas = 0
+import pandas as pd
 
-    for venta, mes in zip(ventas, meses):
-        resultado[mes] = venta
+meses = ["Enero","Febrero","Marzo"]
+ventas = [10, 50, 30]
 
-        total_ventas += 1
-        suma_ventas += venta
+df = pd.DataFrame({ #creando el DataFrame
+    "meses" : meses,
+    "ventas" : ventas
+})
 
-        if venta < venta_minima:
-            venta_minima = venta
-            mes_minimo = mes
+df["ventas"].idxmax()
+df["ventas"].max
 
-        if venta > venta_maxima:
-            venta_maxima = venta
-            mes_maximo = mes
-
-    promedio = suma_ventas / total_ventas
-
-    diccionario_final = {
-        "Meses con sus ventas": resultado,
-        "Venta mínima": {mes_minimo: venta_minima},
-        "Venta máxima": {mes_maximo: venta_maxima},
-        "Promedio": promedio
-    }
-
-    return diccionario_final
-llamada_funcion = funcion (ventas, meses)
-print(llamada_funcion)
+print(df)
+print(df["ventas"].idxmax())
+print(df["ventas"].max())

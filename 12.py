@@ -53,7 +53,7 @@ def funcion (ventas, meses):
     promedio = suma_ventas / total_ventas
 
     diccionario_final = {
-            "venta mimina" : venta_minima,
+            "venta minina" : venta_minima,
             "venta máxima" : venta_maxima,
             "promedio" : promedio,
             "Meses con sus respectivas ventas": diccionario1,
