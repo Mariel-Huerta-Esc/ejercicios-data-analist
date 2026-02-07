@@ -52,6 +52,7 @@ def funcion (ventas, meses, region): #funcion
         labels=["baja", "media", "alta"]
     )
 
+
     #se crea una función expres:
     df["bonificacion"] = df.apply (
         lambda fila : fila["ventas"]*0.1 if fila["tipo_venta"] == "alta"

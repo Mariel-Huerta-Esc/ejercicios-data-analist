@@ -38,7 +38,7 @@ import matplotlib.pyplot as plt
 
 ventas = [120, 90, 300, 50, 210, 400, 75, 180, 60, 250]
 meses  = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre"]
-
+region = ["Norte","Sur","Norte","Centro","Centro","Sur","Norte","Centro","Sur","Norte"]
 def funcion(ventas, meses): #crea DataFrame
     df = pd.DataFrame({
          "ventas" : ventas,
@@ -79,8 +79,8 @@ def funcion(ventas, meses): #crea DataFrame
         "DataFrame completo" : df,
         "Bonificación total" : df["bonificacion"].sum(),
         "Promedio ventas totales" : promedio,
-        "Mes-venta minima" : mes_minimo,
-        "Mes-venta maxima" : mes_maximo
+        "Mes-bonificación minima" : mes_minimo,
+        "Mes-bonificación maxima" : mes_maximo
     }
 
 
