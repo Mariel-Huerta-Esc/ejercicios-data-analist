@@ -71,17 +71,19 @@ def funcion (ventas, meses, region): #funcion
     promedio_bonificacion = df.groupby("region") ["bonificacion"].mean()
 
 
+
     #grafica
     #se necesita una grafica de ventas por region
 
-    x= region
-    y= total_venta
+    x= total_venta.index
+    y= total_venta.values
 
     plt.title("Total de ventas por región")
     plt.bar(x,y)
-    plt.xlabel("ventas por región")
-    plt.ylabel("meses")
+    plt.xlabel("Región")
+    plt.ylabel("Ventas")
     plt.show()
+
 
      #region maxima y minima
     region_maxima = df["region"].loc[df["ventas"].idxmax()]
@@ -97,3 +99,4 @@ def funcion (ventas, meses, region): #funcion
     return diccionario
 llamando_funcion = funcion(ventas, meses, region)
 print(llamando_funcion)
+
