@@ -90,16 +90,14 @@ def funcion(ventas, meses, region):
     #agrupamiento de datos con groupby
     resumen = df.groupby("region")["ventas_totales"].agg(
         suma ="sum", #ventas totales por region
-        promedio = "mean",
-        conteo = "count"
+        promedio = "mean", #promedio ventas totales por region
+        conteo = "count" #conteo de registros
     )
-    #promedio de ventas totales
-    promedio_ventas_totales_region = df.groupby("region")["ventas_totales"].mean()
-    #conteo de registros
-    conteo_ventas_region = df.groupby("region")["ventas_totales"].count()
+  
+
 
     #region con mayor promedio de ventas totales:
-    region_maxima = promedio_ventas_totales_region.idxmax()
+    region_maxima =  resumen["promedio"].idxmax()
 
     # GRAFICA:
     x =  resumen.index
