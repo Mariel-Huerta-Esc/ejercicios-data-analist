@@ -59,9 +59,8 @@ def funcion(ventas, meses): #crea DataFrame
         axis=1 #ejecuta funcion sobre filas
     )
     df["ventas_totales"] = df["ventas"] + df["bonificacion"]
-    df["bonificacion"].sum() #suma todas las bonificaciones
     
-    ventas_totales = df["ventas"].sum() #suma todas las ventas
+   
     promedio = df["ventas_totales"].mean() #promedio de ventas totales
     mes_maximo = df["meses"].loc[df["bonificacion"].idxmax()]
     mes_minimo = df["meses"].loc[df["bonificacion"].idxmin()]
@@ -79,8 +78,8 @@ def funcion(ventas, meses): #crea DataFrame
         "DataFrame completo" : df,
         "Bonificación total" : df["bonificacion"].sum(),
         "Promedio ventas totales" : promedio,
-        "Mes-bonificación minima" : mes_minimo,
-        "Mes-bonificación maxima" : mes_maximo
+        "Mes con mayor bonificacion" : mes_minimo,
+        "Mes con menor bonificacion" : mes_maximo
     }
 
 

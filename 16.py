@@ -29,12 +29,12 @@ ventas = [120, 90, 300, 50, 210, 400, 75, 180, 60, 250] #listas globales
 meses  = ["Enero", "Febrero", "Marzo", "Abril", "Mayo","Junio","Julio", "Agosto", "Septiembre", "Octubre"]
 
 def funcion(ventas, meses):
-    df = pd.DataFrame({ #se crea DataFrame
+    df = pd.DataFrame({ #crear DataFrame
         "ventas" : ventas,
         "meses" : meses
     })
 
-    df["tipo_venta"] = pd.cut(
+    df["tipo_venta"] = pd.cut( #clasificar ventas con pd.cut
         df["ventas"],
         bins=[0,100,200,float("inf")],
         labels=
@@ -42,7 +42,7 @@ def funcion(ventas, meses):
     )
     total = df["ventas"].sum() #suma todas las ventas
     promedio = df["ventas"].mean()
-    porcentaje = df["porcentaje_venta"] = df["ventas"] / total * 100 
+    df["porcentaje_venta"] = df["ventas"] / total * 100 
     conteo = df["tipo_venta"].value_counts() #cuenta las ventas bajas, medias y altas
 
 
@@ -62,7 +62,7 @@ def funcion(ventas, meses):
     #Elementos de la gráfica
     plt.title("Número de ventas según su tipo")
     plt.xlabel("Tipo de venta")
-    plt.ylabel("Número de meses con ventas de este tipo")
+    plt.ylabel("Cantidad de meses por tipo de venta")
     #mostrar la gráfica
     plt.show()
 
