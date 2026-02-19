@@ -120,12 +120,11 @@ def funcion (ventas, meses, region, canal):
     )
 
     #columna de bonificacion
-
     df["bonificacion"] = df.apply(
         lambda fila: fila["ventas"]*0.12 if fila["tipo_venta"] == "alta"
         else fila["ventas"]*0.06 if fila["tipo_venta"] == "media"
         else 0,
-            axis = 1
+            axis = 1 #recorre por filas
     )
 
     #ventas totales
@@ -133,7 +132,7 @@ def funcion (ventas, meses, region, canal):
 
 
     #creacion de columna "es alta"
-    df["es_alta"] = df.apply(
+    df["es_alta"] = df.apply( 
         lambda fila: True if fila["tipo_venta"] == "alta"
         else False,
             axis = 1
@@ -141,7 +140,6 @@ def funcion (ventas, meses, region, canal):
 
 
     #columna categoria_rendimiento
-
     df["categoria_rendimiento"] = df.apply(
         lambda fila: "Top" if fila["ventas"] > 250
         else "Normal" if 120 <= fila["ventas"] <= 250 #rango de 100 a 300
@@ -156,7 +154,7 @@ def funcion (ventas, meses, region, canal):
         promedio = "mean", #promedio
         conteo = "count" #conteo
     )
-
+ 
     #mes con mayor y menor venta
     ventas_por_mes = df.groupby("meses")["ventas_totales"].sum()
     mes_mayor_venta_total = ventas_por_mes.max()
@@ -164,7 +162,7 @@ def funcion (ventas, meses, region, canal):
 
 
     #ranking de ventas totales
-    df["ranking"] = df["ventas_totales"].rank()
+    ranking = df["ranking"] = df["ventas_totales"].rank() #por defecto menor = mejor posicion
     
 
 
@@ -178,6 +176,6 @@ def funcion (ventas, meses, region, canal):
 
 
 
-    return df, resumen, mes_mayor_venta_total, mes_menor_venta_total
+    return df, resumen, mes_mayor_venta_total, mes_menor_venta_total, ranking
 llamando_funcion = funcion(ventas, meses, region, canal)
 print(llamando_funcion)
