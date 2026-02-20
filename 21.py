@@ -141,8 +141,8 @@ def funcion (ventas, meses, region, canal):
 
     #columna categoria_rendimiento
     df["categoria_rendimiento"] = df.apply(
-        lambda fila: "Top" if fila["ventas"] > 250
-        else "Normal" if 120 <= fila["ventas"] <= 250 #rango de 100 a 300
+        lambda fila: "Top" if fila["ventas_totales"] > 250
+        else "Normal" if 120 <= fila["ventas_totales"] <= 250 #rango de 100 a 300
         else "Bajo" if fila["ventas"] < 120
         else "Dato no válido para asignar en categoría",
             axis = 1
@@ -157,13 +157,31 @@ def funcion (ventas, meses, region, canal):
  
     #mes con mayor y menor venta
     ventas_por_mes = df.groupby("meses")["ventas_totales"].sum()
-    mes_mayor_venta_total = ventas_por_mes.max()
-    mes_menor_venta_total = ventas_por_mes.min()
+    mes_mayor_venta_total = ventas_por_mes.idxmax() #con el idxmax me muestra el mes, con max() sólo mostraría el número
+    mes_menor_venta_total = ventas_por_mes.idxmin()
 
 
     #ranking de ventas totales
     ranking = df["ranking"] = df["ventas_totales"].rank() #por defecto menor = mejor posicion
     
+   #gráfica # Crear gráfica:
+    #ventas_totales por mes
+    x = ventas_por_mes.index
+    y = ventas_por_mes.values
+    plt.bar(x,y)
+    plt.title("Ventas totales por mes")
+    plt.xlabel("Ventas totales")
+    plt.ylabel("Meses")
+    plt.show()
+
+    diccionario = {
+        "DataFrame completo" : df,
+        "Ventas altas" : df[df["tipo_venta"] == "alta"],
+        "Resumen de región + canal" : resumen,
+        "Mes mayor venta" : mes_mayor_venta_total,
+        "Mes menor venta" : mes_menor_venta_total,
+        "Top 3 ventas totales" : df.sort_values("ventas_totales", ascending=False).head(3)
+    }
 
 
 
@@ -174,8 +192,6 @@ def funcion (ventas, meses, region, canal):
 
 
 
-
-
-    return df, resumen, mes_mayor_venta_total, mes_menor_venta_total, ranking
+    return diccionario
 llamando_funcion = funcion(ventas, meses, region, canal)
 print(llamando_funcion)

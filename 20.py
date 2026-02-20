@@ -70,7 +70,7 @@ def funcion(ventas, meses, region):
     media = df["ventas"].mean()
     llenado_huecos = df["ventas"] = df["ventas"].fillna(media)
 
-    #clasificación
+    
     df["tipo_venta"] = pd.cut(
         df["ventas"],
         bins=[0,100,200,float("inf")],
