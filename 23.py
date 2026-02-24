@@ -142,24 +142,76 @@ def funcion (ventas, meses, region, fecha):
         .str.strip() #quita los espacios al inicio y al final
         .str.capitalize() #primera letra mayuscula
     )
-
 #convirtiendo "ventas" a numérico
     df["ventas"] = pd.to_numeric(df["ventas"], errors = "coerce")
 
-        #limpieza de la columna fecha
-    # Intento 1: formato año primero
-    fechas1 = pd.to_datetime(df["fecha"], format="%Y-%m-%d", errors="coerce")
-
-    # Intento 2: formato día primero
-    fechas2 = pd.to_datetime(df["fecha"], format="%d-%m-%Y", errors="coerce")
-
-    # Combinamos ambas
-    df["fecha"] = fechas1.fillna(fechas2)
-    fechas3 = pd.to_datetime(df["fecha"], format="%d/%m/%Y", errors="coerce")
-    df["fecha"] = fechas1.fillna(fechas2).fillna(fechas3)
 
 
-    return df["fecha"]
+
+
+    #limpiando la columna de fecha, el codigo está explicado en mi agenda
+    def limpiar_fechas(columna):
+        columna = columna.str.strip()          # quitar espacios
+        columna = columna.str.replace("/", "-", regex=False)  # unificar separador
+        return columna
+    df["fecha"] = limpiar_fechas(df["fecha"])
+    mask_anio = df["fecha"].str.match(r"^\d{4}")
+
+    df.loc[mask_anio, "fecha"] = pd.to_datetime(
+        df.loc[mask_anio, "fecha"],
+        format="%Y-%m-%d",
+        errors="coerce"
+    )
+
+    df.loc[~mask_anio, "fecha"] = pd.to_datetime(
+        df.loc[~mask_anio, "fecha"],
+        format="%d-%m-%Y",
+        errors="coerce"
+    )
+
+    df["fecha"] = pd.to_datetime(df["fecha"]) #esto forza a que toda la columna quede como datetime64 sino, sigue siendo object
+
+#creando las columnas y sustrayendo datos
+    df["año"] = df["fecha"].dt.year
+
+    df["numero_mes"] = df["fecha"].dt.month
+
+
+
+
+
+
+    #viendo si hay datos duplicados en "ventas" y "fecha"
+    df["ventas_repetidas"] = df["ventas"].duplicated()
+    df["fechas_repetidas"] = df["fecha"].duplicated()
+
+    #eliminando  los datos duplicados 
+    df=df.drop_duplicates(["ventas"])
+    df=df.drop_duplicates(["fecha"])
+
+    #Resumen por región y año
+    resumen = df.groupby(["region", "año"])["ventas"].agg(
+        suma = "sum",
+        promedio = "mean",
+        conteo = "count"
+    )
+
+
+
+    mayor_venta_total = df.groupby(["region"])["ventas"].sum()
+    region_mayor_venta_total = mayor_venta_total.idxmin()
+    
+
+
+    return region_mayor_venta_total
 llamando_funcion = funcion(ventas, meses, region, fecha)
 print(llamando_funcion)
 
+"""
+---
+## 7️⃣ Detectar:
+
+* Región con mayor venta total
+* Año con mayor promedio de ventas
+
+"""
