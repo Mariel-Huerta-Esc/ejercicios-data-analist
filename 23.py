@@ -197,9 +197,13 @@ def funcion (ventas, meses, region, fecha):
     )
 
 
+    #region con mayor venta total
+    mayor_venta_total = df.groupby("region")["ventas"].sum()
+    region_mayor_venta_total = mayor_venta_total.idxmax()
 
-    mayor_venta_total = df.groupby(["region"])["ventas"].sum()
-    region_mayor_venta_total = mayor_venta_total.idxmin()
+    #año con mayor promedio de ventas
+    mayor_promedio_ventas = df.groupby("año")["ventas"].mean()
+    año_mayor_promedio_ventas = mayor_promedio_ventas.idxmax()
     
 
 
