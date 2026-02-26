@@ -112,7 +112,7 @@ Promedio de ventas por región.
 
 
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 
 ventas = ["120", "90", "300", "210", "400", "75", "60", "250", "120"]
@@ -206,6 +206,27 @@ def funcion (ventas, meses, region, fecha):
     año_mayor_promedio_ventas = mayor_promedio_ventas.idxmax()
     
 
+    #gráfica:
+    x = resumen.index
+    y = resumen.values
+
+    plt.bar(resumen.index, resumen["conteo"])
+    plt.title("Promedio de ventas por región")
+    plt.xlabel("Región")
+    plt.ylabel("Promedio de ventas")
+    plt.show()
+
+
+    #devolver respuestas en diccionario
+    diccionario = ({
+        "DataFrame limpio" : df,
+        "Resumen por región y año" : resumen,
+        "región con mayor venta total" : region_mayor_venta_total,
+        "Año con mayor promedio" : año_mayor_promedio_ventas
+
+    })
+
+
 
     return region_mayor_venta_total
 llamando_funcion = funcion(ventas, meses, region, fecha)
@@ -213,9 +234,11 @@ print(llamando_funcion)
 
 """
 ---
-## 7️⃣ Detectar:
+## 9️⃣ Devolver diccionario con:
 
+* DataFrame limpio final
+* Resumen por región y año
 * Región con mayor venta total
-* Año con mayor promedio de ventas
+* Año con mayor promedio
 
 """
