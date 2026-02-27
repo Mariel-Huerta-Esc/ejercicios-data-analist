@@ -205,12 +205,14 @@ def funcion (ventas, meses, region, fecha):
     mayor_promedio_ventas = df.groupby("año")["ventas"].mean()
     año_mayor_promedio_ventas = mayor_promedio_ventas.idxmax()
     
+    #promedio region de ventas
+    promedio_region = df.groupby("region")["ventas"].mean() ##
 
     #gráfica:
     x = resumen.index
     y = resumen.values
 
-    plt.bar(resumen.index, resumen["conteo"])
+    plt.bar(promedio_region.index, promedio_region.values)
     plt.title("Promedio de ventas por región")
     plt.xlabel("Región")
     plt.ylabel("Promedio de ventas")
