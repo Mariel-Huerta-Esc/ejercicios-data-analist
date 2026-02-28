@@ -230,7 +230,7 @@ def funcion (ventas, meses, region, fecha):
 
 
 
-    return region_mayor_venta_total
+    return diccionario
 llamando_funcion = funcion(ventas, meses, region, fecha)
 print(llamando_funcion)
 
