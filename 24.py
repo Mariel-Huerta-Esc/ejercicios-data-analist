@@ -130,8 +130,38 @@ def funcion (ventas, region, canal, descuento):
     })
 
 
+    # validación lógica:
+    df["ventas"] = df.apply(
+        lambda fila: fila["ventas"]
+
+
+    )
+
+
+
 
 
     return df
 llamando_funcion = funcion(ventas, region, canal, descuento)
 print(llamando_funcion)
+
+
+"""## 2️⃣ Validación lógica
+
+Regla:
+* Si ventas < 100 → no puede tener descuento mayor a 0
+* Si ocurre eso → marcar esa fila como inconsistente
+Crear columna booleana:
+`inconsistente`
+(No eliminar todavía)"""
+
+
+"""  #se crea una función expres:
+    df["bonificacion"] = df.apply (
+        lambda fila : fila["ventas"]*0.1 if fila["tipo_venta"] == "alta"
+        else fila["ventas"] * 0.05 if fila["tipo_venta"] == "media"
+        else 0,
+            axis = 1
+    )"""
+
+
