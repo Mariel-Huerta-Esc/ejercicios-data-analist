@@ -143,8 +143,8 @@ def funcion (ventas, region, canal, descuento):
         labels=["Baja", "Media", "Alta", "Premium"]
     )
 
-
-    
+    # eliminar las filas inconsistentes
+    df = df[~df["inconsistente"]]
 
 
 
@@ -154,18 +154,11 @@ def funcion (ventas, region, canal, descuento):
 llamando_funcion = funcion(ventas, region, canal, descuento)
 print(llamando_funcion)
 """
+## 5️⃣ Eliminar solo las filas inconsistentes
 
----
-## 4️⃣ Crear categoría de venta usando pd.cut
+Eliminar donde:
+`inconsistente == True`
 
-Reglas:
-
-* Baja: < 100
-* Media: 100–249
-* Alta: 250–399
-* Premium: ≥ 400
-Crear columna:
-`categoria`
 
 
 
