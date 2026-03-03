@@ -136,25 +136,36 @@ def funcion (ventas, region, canal, descuento):
     # nueva columna de ventas finales
     df["ventas_finales"] = df["ventas"] - ((df["ventas"] * df["descuento"])/100) 
 
+    #categorización
+    df["categoria"] = pd.cut(
+        df["ventas"],
+        bins=[float("-inf"),99,249,399,float("inf")],
+        labels=["Baja", "Media", "Alta", "Premium"]
+    )
+
+
     
 
 
 
 
 
-    return df["ventas_finales"]
+    return df
 llamando_funcion = funcion(ventas, region, canal, descuento)
 print(llamando_funcion)
 """
 
 ---
-## 3️⃣ Crear columna ventas_finales
+## 4️⃣ Crear categoría de venta usando pd.cut
 
-Regla:
+Reglas:
 
-```
-ventas_finales = ventas - (ventas * descuento / 100)
-```
+* Baja: < 100
+* Media: 100–249
+* Alta: 250–399
+* Premium: ≥ 400
+Crear columna:
+`categoria`
 
 
 
