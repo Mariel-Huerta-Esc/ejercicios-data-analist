@@ -129,50 +129,33 @@ def funcion (ventas, region, canal, descuento):
         "descuento" : descuento
     })
 
-    #clasificacion de ventas
-    df["ventas_clasificación"] = pd.cut(
-        df["ventas"],
-        bins=[float("-inf"),100,float("inf")],
-        labels=["sin descuento", "aplica descuento"]
-    )
+    #crear columna para que diga si hay inconsistencias
+    df["inconsistente"] = (df["ventas"] < 100) & (df["descuento"] > 0) #esto es porque no se pueden cumplir las dos condiciones al mismo tiempo
 
-    # validación lógica:
-    df["control_descuentos"] = df.apply(
-        lambda fila: fila["ventas"]*0 if fila["ventas_clasificación"] == "sin descuento"
-        else None,
-       
-            axis=1 #recorre fila por fila
-    )
+
+    # nueva columna de ventas finales
+    df["ventas_finales"] = df["ventas"] - ((df["ventas"] * df["descuento"])/100) 
+
+    
 
 
 
 
 
-
-
-
-
-    return df["control_descuentos"]
+    return df["ventas_finales"]
 llamando_funcion = funcion(ventas, region, canal, descuento)
 print(llamando_funcion)
+"""
 
-
-"""## 2️⃣ Validación lógica
+---
+## 3️⃣ Crear columna ventas_finales
 
 Regla:
-* Si ventas < 100 → no puede tener descuento mayor a 0
-* Si ocurre eso → marcar esa fila como inconsistente
-Crear columna booleana:
-`inconsistente`
-(No eliminar todavía)"""
+
+```
+ventas_finales = ventas - (ventas * descuento / 100)
+```
 
 
-"""  #se crea una función expres:
-    df["bonificacion"] = df.apply (
-        lambda fila : fila["ventas"]*0.1 if fila["tipo_venta"] == "alta"
-        else fila["ventas"] * 0.05 if fila["tipo_venta"] == "media"
-        else 0,
-            axis = 1
-    )"""
 
-
+"""
