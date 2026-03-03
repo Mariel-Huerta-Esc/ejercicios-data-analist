@@ -129,15 +129,19 @@ def funcion (ventas, region, canal, descuento):
         "descuento" : descuento
     })
 
-    #clasificacion
-    df["ventas"] = pd.cut(
+    #clasificacion de ventas
+    df["ventas_clasificación"] = pd.cut(
         df["ventas"],
-        bins=[float("-inf"),100,float("inf")]
+        bins=[float("-inf"),100,float("inf")],
+        labels=["sin descuento", "aplica descuento"]
     )
 
     # validación lógica:
-    df["ventas"] = df.apply(
-        lambda fila: fila["ventas"] 
+    df["control_descuentos"] = df.apply(
+        lambda fila: fila["ventas"]*0 if fila["ventas_clasificación"] == "sin descuento"
+        else None,
+       
+            axis=1 #recorre fila por fila
     )
 
 
@@ -145,7 +149,10 @@ def funcion (ventas, region, canal, descuento):
 
 
 
-    return df
+
+
+
+    return df["control_descuentos"]
 llamando_funcion = funcion(ventas, region, canal, descuento)
 print(llamando_funcion)
 
