@@ -129,13 +129,17 @@ def funcion (ventas, region, canal, descuento):
         "descuento" : descuento
     })
 
+    #clasificacion
+    df["ventas"] = pd.cut(
+        df["ventas"],
+        bins=[float("-inf"),100,float("inf")]
+    )
 
     # validación lógica:
     df["ventas"] = df.apply(
-        lambda fila: fila["ventas"]
-
-
+        lambda fila: fila["ventas"] 
     )
+
 
 
 
