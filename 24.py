@@ -170,17 +170,26 @@ def funcion (ventas, region, canal, descuento):
     canal_mayor_suma = mayor_suma_ventas_finales.idxmax()
 
 
+                #grafica
+    plt.bar(resumen.index, resumen["promedio"])
+    plt.title("Promedio de ventas finales por región")
+    plt.xlabel("Region")
+    plt.ylabel("Promedio de ventas finales")
+    plt.show()
 
-    return canal_mayor_suma
+
+    diccionario = {
+        "DataFrame completo" : df
+    }
+
+
+
+    return diccionario
 llamando_funcion = funcion(ventas, region, canal, descuento)
 print(llamando_funcion)
 """
-## 7️⃣ Detectar:
-
-* Región con mayor promedio de ventas_finales
-* Canal con mayor suma de ventas_finales
-(No escribir nombres manualmente, deben salir del cálculo)
-
+## 8️⃣ Crear gráfica
+Promedio de ventas_finales por región.
 
 
 
