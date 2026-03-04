@@ -179,7 +179,10 @@ def funcion (ventas, region, canal, descuento):
 
 
     diccionario = {
-        "DataFrame completo" : df
+        "DataFrame completo" : df,
+        "Resumen por región" : resumen.index,
+        "Región con mayor promedio" : region_mayor_promedio,
+        "Canal con mayor suma" : canal_mayor_suma
     }
 
 
@@ -188,8 +191,7 @@ def funcion (ventas, region, canal, descuento):
 llamando_funcion = funcion(ventas, region, canal, descuento)
 print(llamando_funcion)
 """
-## 8️⃣ Crear gráfica
-Promedio de ventas_finales por región.
+
 
 
 
