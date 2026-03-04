@@ -146,19 +146,37 @@ def funcion (ventas, region, canal, descuento):
     # eliminar las filas inconsistentes
     df = df[~df["inconsistente"]]
 
+    #funcion de porcentaje
+ 
+   
+    #categoria premium
+    df["es_premium"] = df["categoria"] == "Premium"
+
+    # resumen por región
+    resumen = df.groupby("region").agg(
+        suma = ("ventas_finales","sum"),
+        promedio = ("ventas_finales", "mean"),
+       porcentaje_premium = ("es_premium", lambda x: x.mean() * 100)
+    )
 
 
 
-
-    return df
+    return resumen
 llamando_funcion = funcion(ventas, region, canal, descuento)
 print(llamando_funcion)
 """
-## 5️⃣ Eliminar solo las filas inconsistentes
 
-Eliminar donde:
-`inconsistente == True`
 
+---
+## 6️⃣ Crear resumen por región
+
+Debe incluir:
+
+* suma de ventas_finales
+* promedio de ventas_finales
+* porcentaje de ventas Premium
+
+El porcentaje debe calcularse correctamente usando pandas.
 
 
 
