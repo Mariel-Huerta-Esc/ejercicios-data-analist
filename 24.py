@@ -148,7 +148,7 @@ def funcion (ventas, region, canal, descuento):
 
     #funcion de porcentaje
  
-   
+   # ----------------------------------------------------------- ESTUDIAR ESTA FRACCIÓN DE CÓDIGO
     #categoria premium
     df["es_premium"] = df["categoria"] == "Premium"
 
@@ -159,24 +159,29 @@ def funcion (ventas, region, canal, descuento):
        porcentaje_premium = ("es_premium", lambda x: x.mean() * 100)
     )
 
+# -------------------------------------------------------------------
+
+        #región con mayor promedio de ventas_finales
+    mejor_promedio_ventas = df.groupby("region")["ventas_finales"].mean()
+    region_mayor_promedio = mejor_promedio_ventas.idxmax()
+
+        #canal con mayor suma de ventas_finales
+    mayor_suma_ventas_finales = df.groupby("canal")["ventas_finales"].sum()
+    canal_mayor_suma = mayor_suma_ventas_finales.idxmax()
 
 
-    return resumen
+
+    return canal_mayor_suma
 llamando_funcion = funcion(ventas, region, canal, descuento)
 print(llamando_funcion)
 """
+## 7️⃣ Detectar:
+
+* Región con mayor promedio de ventas_finales
+* Canal con mayor suma de ventas_finales
+(No escribir nombres manualmente, deben salir del cálculo)
 
 
----
-## 6️⃣ Crear resumen por región
-
-Debe incluir:
-
-* suma de ventas_finales
-* promedio de ventas_finales
-* porcentaje de ventas Premium
-
-El porcentaje debe calcularse correctamente usando pandas.
 
 
 
