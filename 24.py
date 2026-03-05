@@ -180,7 +180,7 @@ def funcion (ventas, region, canal, descuento):
 
     diccionario = {
         "DataFrame completo" : df,
-        "Resumen por región" : resumen.index,
+        "Resumen por región" : resumen,
         "Región con mayor promedio" : region_mayor_promedio,
         "Canal con mayor suma" : canal_mayor_suma
     }
