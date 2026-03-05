@@ -145,24 +145,31 @@ def funcion(ventas, mes, region):
         labels=["Baja", "Media", "Alta", "Premium"]
     )    
 
+        #columna bonificación
+
+    df["bonificacion"] = df.apply(
+        lambda fila: fila["ventas"]*0.05 if fila["tipo_venta"] == "Alta" or fila["tipo_venta"] == "Premium"
+        else 0,
+            axis = 1
+    )
 
 
 
 
-    return df["tipo_venta"]
+    return df["bonificacion"]
 llamando_funcion = funcion(ventas, mes, region)
 print(llamando_funcion)
 
 """
 ---
-# 3️⃣ Crear columna `tipo_venta`
-Usa `pd.cut`.
-Reglas:
+# 4️⃣ Crear columna `bonificacion`
 
-Baja     < 100
-Media    100–249
-Alta     250–399
-Premium  >= 400
+Regla:
+
+si ventas >= 250 → bonificacion = 5%
+si ventas < 250 → bonificacion = 0
+
+No usar loops.
 
 
 """
