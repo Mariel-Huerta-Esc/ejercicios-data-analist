@@ -137,31 +137,32 @@ def funcion(ventas, mes, region):
     df["ventas"] = df["ventas"].fillna(media)
 
 
+        #creacion de columna
+
+    df["tipo_venta"] = pd.cut(
+        df["ventas"],
+        bins=[float("-inf"),99,249,399, float("inf")],
+        labels=["Baja", "Media", "Alta", "Premium"]
+    )    
 
 
 
 
 
-    return df["ventas"]
+    return df["tipo_venta"]
 llamando_funcion = funcion(ventas, mes, region)
 print(llamando_funcion)
 
 """
 ---
-# 2️⃣ Limpiar la columna `ventas`
+# 3️⃣ Crear columna `tipo_venta`
+Usa `pd.cut`.
+Reglas:
 
-Problemas que tiene el dataset:
-* números como texto `"90"`
-* valores `None`
-* texto `"error"`
-
-Debes:
-
-1. Convertir a número con `pd.to_numeric`
-2. Convertir errores a `NaN`
-3. Reemplazar los `NaN` con **la media de la columna**
-
-⚠️ Esto es exactamente lo que pasa en datasets reales.
+Baja     < 100
+Media    100–249
+Alta     250–399
+Premium  >= 400
 
 
 """
