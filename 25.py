@@ -154,22 +154,22 @@ def funcion(ventas, mes, region):
     )
 
 
+        #columna ventas_totales
+
+    df["ventas_totales"] = df["ventas"] + ((df["ventas"] * df["bonificacion"]) / 100)
 
 
-    return df["bonificacion"]
+
+    return df["ventas_totales"]
 llamando_funcion = funcion(ventas, mes, region)
 print(llamando_funcion)
 
 """
+
 ---
-# 4️⃣ Crear columna `bonificacion`
+# 5️⃣ Crear columna `ventas_totales`
 
-Regla:
-
-si ventas >= 250 → bonificacion = 5%
-si ventas < 250 → bonificacion = 0
-
-No usar loops.
+ventas_totales = ventas + (ventas * bonificacion / 100)
 
 
 """
