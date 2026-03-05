@@ -160,16 +160,29 @@ def funcion(ventas, mes, region):
 
 
 
+        #resumen por región
+
+    resumen = df.groupby("region").agg(
+        suma = ("ventas_totales", "sum"),
+        promedio = ("ventas_totales", "mean"),
+        
+    )
+
+
     return df["ventas_totales"]
 llamando_funcion = funcion(ventas, mes, region)
 print(llamando_funcion)
 
 """
 
----
-# 5️⃣ Crear columna `ventas_totales`
+Debe contener:
 
-ventas_totales = ventas + (ventas * bonificacion / 100)
+suma de ventas_totales
+promedio de ventas_totales
+cantidad de registros
+
+Usa `groupby` + `agg`.
+
 
 
 """
