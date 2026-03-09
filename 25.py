@@ -171,6 +171,7 @@ def funcion(ventas, mes, region):
 
         #detectar
     mayor_promedio_ventas_totales = df.groupby("region")["ventas_totales"].mean()
+    #region con mayor promedio total de ventas
     region_mayor_promedio_ventas_totales = mayor_promedio_ventas_totales.idxmax()
 
 
