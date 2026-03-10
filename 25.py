@@ -109,7 +109,7 @@ Región con mayor promedio.
 * No copiar el ejercicio anterior, intenta **pensar el flujo**
 """
 
-
+#importacion de librerias
 import pandas as pd
 import matplotlib.pyplot as plt
 
