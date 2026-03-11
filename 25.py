@@ -113,6 +113,7 @@ Región con mayor promedio.
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#dataset
 ventas = [120, "90", 300, None, 210, "400", 75, "error", 60, 250]
 mes = ["Enero","Febrero","Marzo","Abril","Mayo",
        "Junio","Julio","Agosto","Septiembre","Octubre"]
