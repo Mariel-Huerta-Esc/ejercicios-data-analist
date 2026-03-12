@@ -181,19 +181,33 @@ def funcion(ventas, mes, region):
     plt.title("Promedio de ventas totales por región")
     plt.xlabel("Región")
     plt.ylabel("Promedio")
-    #plt.show()
+    plt.show()
 
 
-    return  resumen
+
+
+    diccionario = {
+        "DataFrame" : df,
+        "Resumen por región" : resumen,
+        "Región con mayor promedio" : region_mayor_promedio_ventas_totales
+    }
+
+
+    return  diccionario
 llamando_funcion = funcion(ventas, mes, region)
 print(llamando_funcion)
 
 """
----
-# 8️⃣ Crear gráfica
 
-Gráfica de barras:
-promedio de ventas_totales por región
+
+
+---
+# 9️⃣ La función debe devolver
+Un diccionario con:
+
+DataFrame limpio
+Resumen por región
+Región con mayor promedio.
 
 
 
