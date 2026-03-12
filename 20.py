@@ -49,7 +49,7 @@ REGLAS:
 - usar to_numeric
 - todo dentro de una función
           """
-
+ 
 import pandas as pd
 import matplotlib.pyplot as plt
 ventas = [120, "90", 300, None, 210, "400", 75, "error", 60, 250]

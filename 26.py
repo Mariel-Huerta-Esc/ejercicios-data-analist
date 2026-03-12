@@ -56,8 +56,24 @@ def funcion (ventas, region):
     })
 
 
+    #estadisticas
+    media = df["ventas"].mean()
+    mediana = df["ventas"].median()
+    deviacion_estandar = df["ventas"].std()
+
+    diccionario = {
+        "media" : media,
+        "mediana" : mediana,
+        "deviacion estandar" : deviacion_estandar
+    }
 
 
-    return df
+    return diccionario
 llamando_funcion = funcion(ventas, region)
 print(llamando_funcion)
+
+""""
+2. Calcular estadísticas de la columna ventas:
+   media
+   mediana
+   desviación estándar"""
