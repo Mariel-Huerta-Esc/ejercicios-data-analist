@@ -166,6 +166,7 @@ def funcion(ventas, mes, region):
     resumen = df.groupby("region").agg(
         suma = ("ventas_totales", "sum"),
         promedio = ("ventas_totales", "mean"),
+        cantidad_registros = ("ventas", "count")
         
     )
 
@@ -193,7 +194,7 @@ def funcion(ventas, mes, region):
     }
 
 
-    return  diccionario
+    return  resumen
 llamando_funcion = funcion(ventas, mes, region)
 print(llamando_funcion)
 
