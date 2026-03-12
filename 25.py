@@ -176,18 +176,24 @@ def funcion(ventas, mes, region):
     region_mayor_promedio_ventas_totales = mayor_promedio_ventas_totales.idxmax()
 
 
+    #gráfica
+    plt.bar(resumen.index, resumen["promedio"])
+    plt.title("Promedio de ventas totales por región")
+    plt.xlabel("Región")
+    plt.ylabel("Promedio")
+    #plt.show()
 
-    return  df
+
+    return  resumen
 llamando_funcion = funcion(ventas, mes, region)
 print(llamando_funcion)
 
 """
+---
+# 8️⃣ Crear gráfica
 
-# 7️⃣ Detectar
-
-Debes encontrar:
-región con mayor promedio de ventas_totales
-Debe salir del cálculo (no manual).
+Gráfica de barras:
+promedio de ventas_totales por región
 
 
 
