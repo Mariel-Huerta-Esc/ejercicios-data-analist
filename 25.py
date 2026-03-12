@@ -157,7 +157,7 @@ def funcion(ventas, mes, region):
 
         #columna ventas_totales
 
-    df["ventas_totales"] = df["ventas"] + ((df["ventas"] * df["bonificacion"]) / 100)
+    df["ventas_totales"] = df["ventas"] + df["bonificacion"]
 
 
 
