@@ -68,12 +68,22 @@ def funcion (ventas, region):
     }
 
 
+      #Outliers
+    deteccion_outliers = df.apply(
+        lambda fila: fila
+
+      )
+
     return diccionario
 llamando_funcion = funcion(ventas, region)
 print(llamando_funcion)
 
 """"
-2. Calcular estadísticas de la columna ventas:
-   media
-   mediana
-   desviación estándar"""
+
+3. Detectar outliers usando la regla:
+   ventas > media + 2 * desviación_estándar
+   Crear una nueva columna:
+   es_outlier  (True o False)
+   
+   
+   """
