@@ -39,7 +39,7 @@ Crear una función que detecte valores extremos (outliers) en las ventas.
    - estadísticas (media, mediana, desviación estándar)"""
 
 
-
+# importacion de librerias
 import pandas as pd
 import matplotlib.pyplot as plt
 
