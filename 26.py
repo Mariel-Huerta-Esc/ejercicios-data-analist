@@ -1,10 +1,11 @@
+
 """🟡 FASE 2 — EJERCICIO 5 (Detección de outliers)
 DATASET
 ventas = [120, 95, 130, 110, 100, 115, 118, 122, 5000, 105]
 region = ["Norte","Norte","Sur","Centro","Sur",
           "Centro","Norte","Sur","Centro","Sur"]
 
-OBJETIVO
+OBJETIVO} 
 Crear una función que detecte valores extremos (outliers) en las ventas.
 
 1. Crear un DataFrame con las columnas:
@@ -43,55 +44,50 @@ Crear una función que detecte valores extremos (outliers) en las ventas.
 import pandas as pd
 import matplotlib.pyplot as plt
 
- #data
+# data
 ventas = [120, 95, 130, 110, 100, 115, 118, 122, 5000, 105]
+
 region = ["Norte","Norte","Sur","Centro","Sur",
-          "Centro","Norte","Sur",funcion (ventas, region):
+          "Centro","Norte","Sur","Centro","Sur"]
+
+def  funcion (ventas, region):
 
     df = pd.DataFrame({
         "ventas" : ventas,
         "region" : region
     })
 
-
     #estadisticas
     media = df["ventas"].mean()
     mediana = df["ventas"].median()
     desviacion_estandar = df["ventas"].std()
 
+    #condicion
+    regla = media + 2 *  desviacion_estandar
+
+    #Outliers
+    df["es_outlier"] = df["ventas"] > regla
+
+
+
+    df_outliers = df[df["es_outlier"]]
+
     diccionario = {
         "media" : media,
         "mediana" : mediana,
-        "desviacion estandar" : desviacion_estandar
+        "desviacion estandar" : desviacion_estandar,
+        "outliers" : df["es_outlier"]
     }
 
-   #condicion
-    regla = media + 2 *  desviacion_estandar
+    return df_outliers
 
-      #Outliers
-    df["es_outlier"] = df.apply(
-        lambda fila: True if fila["ventas"] > regla
-        else False,
-         axis = 1
-
-      )
-
-    return diccionario
 llamando_funcion = funcion(ventas, region)
 print(llamando_funcion)
 
-""""
+"""
 
-3. Detectar outliers usando la regla:
-   ventas > media + 2 * desviación_estándar
-   Crear una nueva columna:
-   es_outlier  (True o False)
-   
-   
-   """
+4. Crear un DataFrame que contenga
+   solo las filas donde es_outlier sea True.
 
-"""df["es_alta"] = df.apply( 
-        lambda fila: True if fila["tipo_venta"] == "alta"
-        else False,
-            axis = 1
-    )"""
+"""
+
