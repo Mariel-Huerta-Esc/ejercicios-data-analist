@@ -88,7 +88,16 @@ def  funcion (ventas, region):
     plt.ylabel("Frecuencia")
     plt.show()
 
-    return df_outliers
+
+
+
+    #resumen
+    resumen = df.groupby("region")["ventas"].agg(
+        promedio = "mean",
+        registros = "count"
+    )
+
+    return resumen
 
 llamando_funcion = funcion(ventas, region)
 print(llamando_funcion)
@@ -96,9 +105,11 @@ print(llamando_funcion)
 """
 
 
-5. Crear una gráfica:
-   histograma de la columna ventas
-   (usar plt.hist).
+6. Crear un resumen por región usando groupby + agg.
+   Debe incluir:
+   - promedio de ventas
+   - cantidad de registros
+
 
 """
 
