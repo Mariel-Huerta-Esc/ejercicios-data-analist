@@ -1,0 +1,43 @@
+"""
+FASE 3 — EJERCICIO 1 (Media vs Mediana)
+
+DATASET:
+ventas = [120, 95, 130, 110, 100, 115, 118, 122, 5000, 105]
+
+OBJETIVO:
+Analizar si la media está siendo afectada por un outlier.
+
+1. Crear un DataFrame con una columna:
+   ventas
+
+2. Calcular:
+   media
+   mediana
+
+3. Mostrar ambos valores e identificar:
+   ¿son muy diferentes?
+
+4. Crear una gráfica:
+   histograma de ventas
+   (usar plt.hist)
+
+5. Eliminar el outlier
+   Regla:
+   ventas < media + 2 * desviación_estándar
+   Crear un nuevo DataFrame sin el outlier
+
+6. Volver a calcular:
+   nueva media
+   nueva mediana
+
+7. Comparar antes vs después
+   Pregunta clave:
+   ¿la media cambió mucho?
+   ¿la mediana cambió?
+
+8. La función debe devolver:
+   - media original
+   - mediana original
+   - media sin outlier
+   - mediana sin outlier
+"""
