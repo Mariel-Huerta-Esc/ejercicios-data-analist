@@ -69,7 +69,7 @@ def  funcion (ventas, region):
     df["es_outlier"] = df["ventas"] > regla
 
 
-
+   #devuelve las filas en donde "es_outlier" = True
     df_outliers = df[df["es_outlier"]]
 
     diccionario = {
@@ -79,6 +79,15 @@ def  funcion (ventas, region):
         "outliers" : df["es_outlier"]
     }
 
+
+
+   #grafica
+    plt.hist(df["ventas"], bins=5)
+    plt.title("Histograma de ventas")
+    plt.xlabel("Ventas")
+    plt.ylabel("Frecuencia")
+    plt.show()
+
     return df_outliers
 
 llamando_funcion = funcion(ventas, region)
@@ -86,8 +95,10 @@ print(llamando_funcion)
 
 """
 
-4. Crear un DataFrame que contenga
-   solo las filas donde es_outlier sea True.
+
+5. Crear una gráfica:
+   histograma de la columna ventas
+   (usar plt.hist).
 
 """
 
