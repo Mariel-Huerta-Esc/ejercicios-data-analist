@@ -46,9 +46,7 @@ import matplotlib.pyplot as plt
  #data
 ventas = [120, 95, 130, 110, 100, 115, 118, 122, 5000, 105]
 region = ["Norte","Norte","Sur","Centro","Sur",
-          "Centro","Norte","Sur","Centro","Sur"]
-
-def funcion (ventas, region):
+          "Centro","Norte","Sur",funcion (ventas, region):
 
     df = pd.DataFrame({
         "ventas" : ventas,
@@ -59,18 +57,22 @@ def funcion (ventas, region):
     #estadisticas
     media = df["ventas"].mean()
     mediana = df["ventas"].median()
-    deviacion_estandar = df["ventas"].std()
+    desviacion_estandar = df["ventas"].std()
 
     diccionario = {
         "media" : media,
         "mediana" : mediana,
-        "deviacion estandar" : deviacion_estandar
+        "desviacion estandar" : desviacion_estandar
     }
 
+   #condicion
+    regla = media + 2 *  desviacion_estandar
 
       #Outliers
-    deteccion_outliers = df.apply(
-        lambda fila: fila
+    df["es_outlier"] = df.apply(
+        lambda fila: True if fila["ventas"] > regla
+        else False,
+         axis = 1
 
       )
 
@@ -87,3 +89,9 @@ print(llamando_funcion)
    
    
    """
+
+"""df["es_alta"] = df.apply( 
+        lambda fila: True if fila["tipo_venta"] == "alta"
+        else False,
+            axis = 1
+    )"""
