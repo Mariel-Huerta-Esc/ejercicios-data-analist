@@ -43,7 +43,7 @@ Crear una función que detecte valores extremos (outliers) en las ventas.
 import pandas as pd
 import matplotlib.pyplot as plt
 
- 
+ #data
 ventas = [120, 95, 130, 110, 100, 115, 118, 122, 5000, 105]
 region = ["Norte","Norte","Sur","Centro","Sur",
           "Centro","Norte","Sur","Centro","Sur"]
