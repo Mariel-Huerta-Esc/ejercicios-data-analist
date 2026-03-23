@@ -41,3 +41,32 @@ Analizar si la media está siendo afectada por un outlier.
    - media sin outlier
    - mediana sin outlier
 """
+import pandas as pd
+import matplotlib.pyplot
+
+ventas = [120, 95, 130, 110, 100, 115, 118, 122, 5000, 105]
+
+
+
+def funcion(ventas):
+    df = pd.DataFrame({
+        "ventas" : ventas
+    })
+
+    #calculo de media y mediana
+    df["ventas"].mean #media
+    df["ventas"].median
+    
+
+
+
+
+
+
+
+    """
+    
+2. Calcular:
+   media
+   mediana
+"""
