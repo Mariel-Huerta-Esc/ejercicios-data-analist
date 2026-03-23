@@ -42,7 +42,7 @@ Analizar si la media está siendo afectada por un outlier.
    - mediana sin outlier
 """
 import pandas as pd
-import matplotlib.pyplot
+import matplotlib.pyplot as plt
 
 ventas = [120, 95, 130, 110, 100, 115, 118, 122, 5000, 105]
 
@@ -56,7 +56,13 @@ def funcion(ventas):
     #calculo de media y mediana
     media = df["ventas"].mean()
     mediana = df["ventas"].median()
-    
+
+
+    plt.hist(df["ventas"], bins=5)
+    plt.title("Histograma de ventas")
+    plt.xlabel("Ventas")
+    plt.ylabel("Frecuencia")
+    plt.show()   
 
 
 
@@ -67,21 +73,17 @@ def funcion(ventas):
       }
 
 
+
     return diccionario
 llamando_funcion = funcion(ventas)
 print(llamando_funcion)
 
-
-
-
-
-
-
 """
 
     
-3. Mostrar ambos valores e identificar:
-   ¿son muy diferentes?
+4. Crear una gráfica:
+   histograma de ventas
+   (usar plt.hist)
 
 
 """
