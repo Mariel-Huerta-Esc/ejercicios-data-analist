@@ -54,19 +54,34 @@ def funcion(ventas):
     })
 
     #calculo de media y mediana
-    df["ventas"].mean #media
-    df["ventas"].median
+    media = df["ventas"].mean()
+    mediana = df["ventas"].median()
     
 
 
 
 
+    diccionario = {
+            "media" : media,
+            "mediana" : mediana
+      }
+
+
+    return diccionario
+llamando_funcion = funcion(ventas)
+print(llamando_funcion)
 
 
 
-    """
+
+
+
+
+"""
+
     
-2. Calcular:
-   media
-   mediana
+3. Mostrar ambos valores e identificar:
+   ¿son muy diferentes?
+
+
 """
