@@ -69,6 +69,12 @@ def funcion(ventas):
     regla = df["ventas"]  < media + 2 * desviacion_estandar
     df_sin_outlier = df[regla] 
 
+
+
+# nuevo cálculo de media y mediana
+    nueva_media = df["ventas"].mean()
+    nueva_mediana = df["ventas"].median()
+
     diccionario = {
             "media" : media,
             "mediana" : mediana
@@ -82,10 +88,9 @@ print(llamando_funcion)
 
 """
 
-5. Eliminar el outlier
-   Regla:
-   ventas < media + 2 * desviación_estándar
-   Crear un nuevo DataFrame sin el outlier
+6. Volver a calcular:
+   nueva media
+   nueva mediana
 
 
 """
