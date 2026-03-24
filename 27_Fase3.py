@@ -72,25 +72,22 @@ def funcion(ventas):
 
 
 # nuevo cálculo de media y mediana
-    nueva_media = df["ventas"].mean()
-    nueva_mediana = df["ventas"].median()
+    nueva_media = df_sin_outlier["ventas"].mean()
+    nueva_mediana = df_sin_outlier["ventas"].median()
 
     diccionario = {
             "media" : media,
-            "mediana" : mediana
-      }
+            "mediana" : mediana,
+            "nueva media" : nueva_media,
+            "nueva mediana" : nueva_mediana
+   
+   }
 
-
-
-    return 
+    return diccionario
 llamando_funcion = funcion(ventas)
 print(llamando_funcion)
 
 """
-
-6. Volver a calcular:
-   nueva media
-   nueva mediana
-
-
+puedo decir que la media cambió pero la mediana no tuvo un cambio realmente significativo, supongo que se trata en este caso de ser 
+más precisos
 """
