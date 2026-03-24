@@ -66,7 +66,8 @@ def funcion(ventas):
 
    #Eliminar outlier
     desviacion_estandar = df["ventas"].std()
-    eliminar_outlier = df["ventas"]  < media + 2 * desviacion_estandar
+    regla = df["ventas"]  < media + 2 * desviacion_estandar
+    df_sin_outlier = df[regla] 
 
     diccionario = {
             "media" : media,
@@ -75,7 +76,7 @@ def funcion(ventas):
 
 
 
-    return diccionario
+    return 
 llamando_funcion = funcion(ventas)
 print(llamando_funcion)
 

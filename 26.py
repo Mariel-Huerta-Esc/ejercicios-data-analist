@@ -94,24 +94,15 @@ def  funcion (ventas, region):
 
 
     diccionario = {
-       
+        "DataFrame" : df,
         "outliers" : df[df["es_outlier"]],
-        
+        "media" : media,
+        "mediana" : mediana,
+        "desviacion estandar" : desviacion_estandar
     }
 
     return diccionario
 
 llamando_funcion = funcion(ventas, region)
 print(llamando_funcion)
-
-"""
-
-
-7. La función debe devolver un diccionario con:
-   - DataFrame completo
-   - filas_outliers
-   - estadísticas (media, mediana, desviación estándar)
-   
-   """
-
 
