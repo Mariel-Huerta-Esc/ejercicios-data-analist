@@ -64,8 +64,9 @@ def funcion(ventas):
     plt.ylabel("Frecuencia")
     plt.show()   
 
-
-
+   #Eliminar outlier
+    desviacion_estandar = df["ventas"].std()
+    eliminar_outlier = df["ventas"]  < media + 2 * desviacion_estandar
 
     diccionario = {
             "media" : media,
@@ -80,10 +81,10 @@ print(llamando_funcion)
 
 """
 
-    
-4. Crear una gráfica:
-   histograma de ventas
-   (usar plt.hist)
+5. Eliminar el outlier
+   Regla:
+   ventas < media + 2 * desviación_estándar
+   Crear un nuevo DataFrame sin el outlier
 
 
 """
