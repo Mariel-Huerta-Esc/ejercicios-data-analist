@@ -82,7 +82,7 @@ def funcion(ventas):
             "nueva mediana" : nueva_mediana
    
    }
-
+#devolviendo diccionario
     return diccionario
 llamando_funcion = funcion(ventas)
 print(llamando_funcion)
