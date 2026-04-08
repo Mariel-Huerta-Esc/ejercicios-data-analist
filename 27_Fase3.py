@@ -87,7 +87,9 @@ def funcion(ventas):
 llamando_funcion = funcion(ventas)
 print(llamando_funcion)
 
+
 """
+Resultado:
 puedo decir que la media cambió pero la mediana no tuvo un cambio realmente significativo, supongo que se trata en este caso de ser 
 más precisos
 """
