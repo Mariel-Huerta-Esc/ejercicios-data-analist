@@ -66,7 +66,10 @@ def funcion(ventas):
 
    #Eliminar outlier
     desviacion_estandar = df["ventas"].std()
-    regla = df["ventas"]  < media + 2 * desviacion_estandar
+    regla = (
+     (df["ventas"] > media - 2 * desviacion_estandar) &
+     (df["ventas"] < media + 2 * desviacion_estandar)
+)
     df_sin_outlier = df[regla] 
 
 
