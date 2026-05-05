@@ -94,6 +94,31 @@ PISTA IMPORTANTE:
 Q1 = df["ventas"].quantile(0.25)
 Q3 = df["ventas"].quantile(0.75)
 ```
-
-
 """
+#librerias importadas
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#data set 
+ventas = [120, 95, 130, 110, 100, 115, 118, 122, 5000, 105, 140, 150, 160, 170, 180]
+
+region = ["Norte","Norte","Sur","Centro","Sur",
+          "Centro","Norte","Sur","Centro","Sur",
+          "Norte","Centro","Sur","Norte","Centro"]
+
+
+def funcion (ventas, region):
+    #dataframe
+    df = pd.DataFrame ({
+        "ventas" : ventas,
+        "region" : region
+    })
+
+
+    diccionario = {
+        "dataframe" : df
+    }
+
+    return diccionario
+llamando_funcion = funcion(ventas, region)
+print(llamando_funcion)
